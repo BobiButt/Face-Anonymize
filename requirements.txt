@@ -1,7 +1,9 @@
-fastapi
-uvicorn
+# CPU-only Face Anonymize dependencies
+# Install torch CPU first (see README), then:
 opencv-python
 numpy
-ultralytics
+fastapi
+uvicorn
 python-multipart
 jinja2
+ultralytics

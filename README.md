@@ -37,17 +37,37 @@ Face-Anonymize/
 
 ## Installation
 
+### CPU-only setup (recommended if you have no NVIDIA GPU)
+
+ultralytics depends on PyTorch, and pip's default PyTorch includes NVIDIA/CUDA packages. To avoid that, install the CPU build first:
+
 ```bash
 # Clone the repository
 git clone https://github.com/BOBI-BUTT/Face-Anonymize.git
 cd Face-Anonymize
 
-# Create a virtual environment (recommended)
+# Create and activate a virtual environment
 python -m venv venv
 source venv/bin/activate   # Linux/Mac
-# or: venv\Scripts\activate  # Windows
+# venv\Scripts\activate    # Windows
 
-# Install dependencies
+# 1. Install CPU-only PyTorch (no NVIDIA/CUDA packages)
+pip install --index-url https://download.pytorch.org/whl/cpu torch torchvision
+
+# 2. Install ultralytics without its default torch dependency (already installed)
+pip install ultralytics --no-deps
+
+# 3. Install the remaining requirements
+pip install -r requirements.txt
+```
+
+### Standard setup (includes CUDA/NVIDIA packages)
+
+```bash
+git clone https://github.com/BOBI-BUTT/Face-Anonymize.git
+cd Face-Anonymize
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -64,9 +84,23 @@ INPUT_PATH = 0
 
 OUTPUT_PATH = "outputs/output.mp4"
 MODEL_DIR = "models"
-MODEL_NAME = "yolov8n-face.pt"  # auto-downloaded if missing
+MODEL_NAME = "yolov8n-face.pt"  # face model - boxes cover faces only
 BLUR_STRENGTH = 51              # must be odd for Gaussian blur
 ```
+
+### Quick run (CPU-only)
+
+```bash
+cd /home/bobi/Documents/GitHub/Face-Anonymize
+python -m venv venv
+source venv/bin/activate        # Linux/Mac  (venv\Scripts\activate on Windows)
+pip install --index-url https://download.pytorch.org/whl/cpu torch torchvision
+pip install ultralytics --no-deps
+pip install -r requirements.txt
+python main.py
+```
+
+> **Note:** `yolov8n-face.pt` is a face-specific model downloaded from HuggingFace, so the blur box covers only the face (not the whole person). In the webcam window, press `q` or click the window's X button to close and exit the program.
 
 ## Usage
 

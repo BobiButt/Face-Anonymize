@@ -31,7 +31,11 @@ def main():
             if not ret: break
             frame = anonymize_frame(frame, model, config.BLUR_STRENGTH)
             cv2.imshow("Face Anonymizer - Press Q to quit", frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord('q'):
+                break
+            # Window closed via X button
+            if cv2.getWindowProperty("Face Anonymizer - Press Q to quit", cv2.WND_PROP_VISIBLE) < 1:
                 break
         cap.release()
         cv2.destroyAllWindows()

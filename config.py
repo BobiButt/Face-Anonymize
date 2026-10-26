@@ -13,5 +13,5 @@ INPUT_PATH = 0
 
 OUTPUT_PATH = "outputs/output.mp4"
 MODEL_DIR = "models"
-MODEL_NAME = "yolov8n-face.pt" # it will auto download
+MODEL_NAME = "yolov8n-face.pt" # face model - boxes cover faces only
 BLUR_STRENGTH = 51
