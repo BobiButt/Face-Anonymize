@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Face Anonymizer</title></head>
+<body>
+<h2>Face Anonymize - Select Input</h2>
+<form action="/process" method="post" enctype="multipart/form-data">
+  <label>Upload Image or Video:</label>
+  <input type="file" name="file" accept="image/*,video/*"><br><br>
+  <button type="submit">Upload & Anonymize</button>
+</form>
+<br>
+<button onclick="fetch('/webcam').then(()=>alert('Webcam started on server, check popup'))">Start Webcam Directly</button>
+</body>
+</html>
+
+To run UI with FastAPI, just add this quick app.py:
+
+```python
