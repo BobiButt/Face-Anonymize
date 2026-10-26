@@ -104,15 +104,19 @@ python main.py
 
 ## Usage
 
-### Command line
+### Image
 
 ```bash
+# Put your image in the inputs folder
+cp your_photo.jpg inputs/
+
+# Edit config.py:
+# INPUT_TYPE = "image"
+# INPUT_PATH = "inputs/your_photo.jpg"
+
 python main.py
 ```
-
-- **Image**: reads `INPUT_PATH`, writes a `.jpg` result.
-- **Video**: reads `INPUT_PATH`, writes an `.mp4` result.
-- **Webcam**: shows a live window; press `q` to quit.
+Result is saved to `outputs/your_photo.jpg` (`.jpg` regardless of input extension).
 
 ### FastAPI web UI
 

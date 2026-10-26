@@ -5,11 +5,11 @@
 INPUT_TYPE = "webcam"  
 
 # If image/video, give path. If webcam, leave as 0
-INPUT_PATH = 0  
+# INPUT_PATH = 0  
 # Examples:
 # INPUT_PATH = "inputs/test.jpg"
 # INPUT_PATH = "inputs/test.mp4"
-# INPUT_PATH = 0  # for webcam
+INPUT_PATH = 0  # for webcam
 
 OUTPUT_PATH = "outputs/output.mp4"
 MODEL_DIR = "models"
