@@ -125,6 +125,7 @@ uvicorn app:app --reload
 ```
 
 Open `http://127.0.0.1:8000`, upload an image or video, and download the anonymized result.
+The uploaded file is processed frame-by-frame (for videos) or as a whole (for images), and the result page shows a direct download link.
 
 ## Requirements
 

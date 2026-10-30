@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head><title>Face Anonymizer</title></head>
+<head>
+    <title>Face Anonymizer</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; line-height: 1.5; }
+        .result { margin-top: 30px; padding: 16px; background: #e7f3fe; border: 1px solid #b3e0ff; border-radius: 8px; }
+        .result a { color: #0066cc; text-decoration: none; font-weight: bold; }
+        .result a:hover { text-decoration: underline; }
+        .error { margin-top: 20px; padding: 12px; background: #fdecea; border: 1px solid #f5c6c6; border-radius: 8px; color: #b00020; }
+    </style>
+</head>
 <body>
-<h2>Face Anonymize - Select Input</h2>
-<form action="/process" method="post" enctype="multipart/form-data">
-  <label>Upload Image or Video:</label>
-  <input type="file" name="file" accept="image/*,video/*"><br><br>
-  <button type="submit">Upload & Anonymize</button>
-</form>
-<br>
-<button onclick="fetch('/webcam').then(()=>alert('Webcam started on server, check popup'))">Start Webcam Directly</button>
+    <h2>Face Anonymize - Select Input</h2>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <label>Upload Image or Video:</label><br>
+        <input type="file" name="file" accept="image/*,video/*" required><br><br>
+        <button type="submit">Upload &amp; Anonymize</button>
+    </form>
+    <br>
+    {% if result %}
+    <div class="result">
+        <h3>&#10003; Anonymization complete!</h3>
+        <p>Your anonymized file is ready:</p>
+        <p><strong>{{ result }}</strong></p>
+        <a href="/outputs/{{ result.split('/')[-1] }}" download>Download anonymized file</a>
+    </div>
+    {% endif %}
+    {% if error %}
+    <div class="error"><strong>Error:</strong> {{ error }}</div>
+    {% endif %}
 </body>
 </html>
-
-To run UI with FastAPI, just add this quick app.py:
-
-```python
